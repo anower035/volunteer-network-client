@@ -1,0 +1,17 @@
+.uploadButton {
+    max-width: 400px;
+}
+.uploadButton input[type="file"]{
+    display:none;
+}
+.uploadButton img.icon{
+    width: 15px;
+    margin: 0 10px 2px 0;
+}
+.uploadButton h5{
+   display:inline-block;
+   font-size: medium;
+}
+#submitButton{
+    margin-left: 56%;
+}

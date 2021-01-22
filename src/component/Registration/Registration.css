@@ -1,0 +1,17 @@
+#login {
+    max-width: 400px;
+    padding:35px;
+}
+#login h3{
+    text-align:left;
+    margin-bottom: 40px;
+    font-size:20px;
+    font-weight: bold;
+}
+.regButton h6{
+    padding-top: 5px;
+}
+.regButton:hover{
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,35 @@
+#vregimg {
+    margin-top: 18%;
+    max-width: 400px;
+}
+#vregimg img.icon{
+    width: 15px;
+    margin: 0 10px 2px 0;
+}
+#vregimg h5{
+display:inline-block;
+   font-size: medium;
+}
+.alluserlist{
+    margin-top: 3%;
+}
+#vplusimg {
+    margin-top: 3%;
+    margin-right:35%;
+    max-width: 400px;
+}
+#vplusimg img.icon{
+    width: 15px;
+    margin: 0 10px 2px 0;
+}
+#vplusimg h5{
+display:inline-block;
+   font-size: medium;
+}
+#vdelimg img.icon{
+    width: 25px;
+    margin: 0 0px 0px 0;
+}
+#vdelimg button{
+    margin: 1px 1px 1px 1px;
+}
