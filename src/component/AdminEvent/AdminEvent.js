@@ -38,7 +38,7 @@ const AdminEvent = () => {
 
         const eventArray = { name, pic_url, description, eventStarts }
         console.log(eventArray);
-            fetch('http://localhost:5000/addEvent',{
+            fetch('https://morning-citadel-53770.herokuapp.com/addEvent',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

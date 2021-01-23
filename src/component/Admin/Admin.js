@@ -12,7 +12,7 @@ const Admin = () => {
    const [userdelete,setuserdelete] = useState(false);
 
    useEffect(() => {
-    fetch('http://localhost:5000/alluser')
+    fetch('https://morning-citadel-53770.herokuapp.com/alluser')
     .then(res => res.json())
     .then(data => alluser(data));
    },[userdelete])
@@ -20,7 +20,7 @@ const Admin = () => {
 
    function delvol(id){
 
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://morning-citadel-53770.herokuapp.com/delete/${id}`, {
         method: 'DELETE',
     })
     // .then(res => res.json())

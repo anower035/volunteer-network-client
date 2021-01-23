@@ -36,7 +36,7 @@ const RegistrationList = () => {
     const [del,setdel] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/registrations?email='+loggedInUser.email,{
+        fetch('https://morning-citadel-53770.herokuapp.com/registrations?email='+loggedInUser.email,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const RegistrationList = () => {
 
     function deletevolunteer(id){
 
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://morning-citadel-53770.herokuapp.com/delete/${id}`, {
             method: 'DELETE',
         })
         // .then(res => res.json())

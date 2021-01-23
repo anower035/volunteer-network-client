@@ -29,7 +29,7 @@ const Registration = () => {
     const handleRegistration = () => {
         const description = document.getElementById('description').value;
         const registersDetails = {...loggedInUser, ...selectedDate,volunteerItem,description};
-        fetch('http://localhost:5000/addRegisters', {
+        fetch('https://morning-citadel-53770.herokuapp.com/addRegisters', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
