@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const RegistrationList = () => {
     const [registrations, setRegistrations] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [del,setdel] = useState(false);
+    const [del,setDel] = useState(false);
 
     useEffect(() => {
         fetch('https://morning-citadel-53770.herokuapp.com/registrations?email='+loggedInUser.email,{
@@ -51,15 +51,15 @@ const RegistrationList = () => {
 
 
 
-    function deletevolunteer(id){
+    function deleteVolunteer(id){
 
         fetch(`https://morning-citadel-53770.herokuapp.com/delete/${id}`, {
             method: 'DELETE',
         })
         // .then(res => res.json())
         .then(res => {
-            console.log("Deleted Succesfully")
-            setdel(!del); 
+            console.log("Deleted Successfully")
+            setDel(!del); 
         })
 
     }
@@ -94,7 +94,7 @@ const RegistrationList = () => {
                                     <Typography variant="body2" gutterBottom>
                                         {(new Date(reg.datefill).toDateString('dd/MM/yyyy'))}
                                         <br/>
-                                        <Button onClick={()=> deletevolunteer(reg._id)}  className="btn btn-outline-warning mt-4">Cancel</Button>
+                                        <Button onClick={()=> deleteVolunteer(reg._id)}  className="btn btn-outline-dark mt-4">Cancel</Button>
                                     </Typography>
                                 </Grid>
                                 </Grid>
