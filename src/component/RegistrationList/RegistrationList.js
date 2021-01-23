@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import { Link } from 'react-router-dom';
 import './RegistrationList.css';
 
 
@@ -84,7 +83,7 @@ const RegistrationList = () => {
                             <Grid container spacing={2}>
                                 <Grid item>
                                     <ButtonBase className={classes.image}>
-                                        <img className={classes.img} alt="complex" src='https://i.ibb.co/Hp8zwkq/extra-Volunteer.png'/>
+                                        <img className={classes.img} alt="complex" src="https://i.ibb.co/rbS8N1f/extra-Volunteer.png"/>
                                     </ButtonBase>
                                 </Grid>
                                 <Grid item xs={12} sm container>
