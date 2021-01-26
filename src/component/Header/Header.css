@@ -50,24 +50,16 @@
     width: 100%;
     height: auto;
   }
-  #logOutButton{
+  #adminButton{
     margin-left: 10px;
+    margin-right: 5px;
   }
-  #logInButton{
-    margin-right: 0px;
-    margin-left: 0px;
-    padding-right:10px;
-    color:#fff;
-  }
-  /* .headersearch{
-      margin-top: 40px;
-      margin-left: 25%;
-  } */
   .search{
       margin-left: 18%;
   }
   #username{
     padding-top: 11px;
-    padding-right: 10px;
+    padding-right: 5px;
     font-size: medium;
+    font-style: italic;
   }

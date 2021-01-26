@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import Images from '../../Images/Icons/logo.png';
@@ -32,10 +32,12 @@ const Header = () => {
                       <Link className="nav-link" to="/blog">Blog</Link>
                     </li>
                   </ul>
-                  <h3 id="username">{loggedInUser.email}</h3>
-                  <Link to="/registrationList" id="logInButton" className="btn btn-primary">Register</Link>
-                  <Link to="/admin" id="logOutButton" className="btn btn-dark my-2 my-sm-">Admin</Link>
-                  <button id="logOutButton" className="btn btn-danger my-2 my-sm-" onClick={() => setLoggedInUser({})}>Logout</button>
+                  <h3 id="username" className='text-dark'>{loggedInUser.name}</h3>
+                  <Link to="/admin" id="adminButton" className="btn btn-dark my-2 my-sm-2">Admin</Link>
+                    {
+                      loggedInUser.email ? <button id="logOutButton" className="btn btn-danger my-2 my-sm-2" onClick={() => setLoggedInUser({})}>Logout</button>
+                                         : <Link to="/login" id="loginButton" class="btn btn-warning px-3 ml-2">Login</Link> 
+                    }                    
                 </div>
               </div>
             </nav>

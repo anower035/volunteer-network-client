@@ -1,5 +1,5 @@
 .uploadButton {
-    max-width: 400px;
+    max-width: 500px;
 }
 .uploadButton input[type="file"]{
     display:none;
@@ -7,11 +7,26 @@
 .uploadButton img.icon{
     width: 15px;
     margin: 0 10px 2px 0;
+    filter:brightness(200%);
 }
 .uploadButton h5{
    display:inline-block;
    font-size: medium;
 }
-#submitButton{
-    margin-left: 56%;
+input[type="text"]{
+    padding:5px;
+    border:1px solid #a8a8a8;
+    border-radius:5px;
+}
+input[type='text']:focus { 
+    outline: none;
+    border-color: skyblue;
+    box-shadow: 0 0 5px 2px skyblue;
+}
+input[type="date"]{
+    width:90%;
+    padding:5px;
+    border:none;
+    outline:none;
+    border-bottom: 1px solid grey;
 }

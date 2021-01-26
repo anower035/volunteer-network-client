@@ -34,12 +34,12 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/admin">
+            <PrivateRoute path="/admin">
               <Admin/>
-            </Route>
-            <Route exact path="/addEvent">
+            </PrivateRoute>
+            <PrivateRoute exact path="/addEvent">
               <AdminEvent/>
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <Login />
             </Route>

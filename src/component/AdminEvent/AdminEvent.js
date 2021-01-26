@@ -1,60 +1,52 @@
 import React from 'react';
 import imageV from '../../Images/Icons/users-alt 1.png'
 import imagePlus from '../../Images/Icons/plus 1.png'
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { Form } from 'react-bootstrap';
 import 'date-fns';
-import TextField from '@material-ui/core/TextField';
 import upload from '../../Images/Icons/cloud-upload-outline 1.png'
 import './AdminEvent.css';
+import { useForm } from 'react-hook-form';
 
 
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
+        flexGrow: 1,
     },
     paper: {
-      marginLeft:'5%',
-      padding: theme.spacing(2),
-      maxWidth: 500,
+        padding: theme.spacing(2),
+        maxWidth: 500,
     },
     button: {
-        margin: theme.spacing(1),
+        margin: theme.spacing(),
     },
-  }));
+}));
 
 const AdminEvent = () => {
-    const classes = useStyles();
-    const handleAddEvent=() => {
-        const name = document.getElementById("eventName").value
-        const pic_url = document.getElementById("eventPic").value
-        const description = document.getElementById("eventDescription").value
-        const eventStarts = document.getElementById("date").value
-
-        const eventArray = { name, pic_url, description, eventStarts }
-        console.log(eventArray);
-            fetch('https://morning-citadel-53770.herokuapp.com/addEvent',{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(eventArray)
-            })
+    const { register, handleSubmit } = useForm();
+    const onSubmit = (data,e) => {
+        console.log(data)
+        fetch('https://morning-citadel-53770.herokuapp.com/addEvent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
             .then(res => res.json())
             .then(data => {
-            if(data){
-                alert('your registration place successfully');
-                console.log(data);
-            }
-            window.location.reload(false);
-        })
-   
-        }
+                if (data) {
+                    alert('your registration place successfully');
+                    console.log('data');
+                }
+            })
+                e.target.reset();    
+    };
+    const classes = useStyles();
     return (
         <div>
             <section id="main">
@@ -63,71 +55,60 @@ const AdminEvent = () => {
                         <div className="col-md-3 text-center">
                             <Link to="/admin">
                                 <div id="vregimg">
-                                    <img src={imageV} className="icon" alt=""/>
+                                    <img src={imageV} className="icon" alt="" />
                                     <h5>Volunteer Register List</h5>
                                 </div>
                             </Link>
                             <Link to="/addEvent">
-                                <div  id="vplusimg">
-                                    <img src={imagePlus} className="icon" alt=""/>
+                                <div id="vplusimg">
+                                    <img src={imagePlus} className="icon" alt="" />
                                     <h5>Add Event</h5>
                                 </div>
                             </Link>
                         </div>
                         <div className="col-md-9">
                             <table className="table table-striped">
-                                <thead> 
+                                <thead>
                                     <div className="row container-fluid mt-5">
-                                            <div className="col-md-2" className={classes.root}>
-                                                <Paper className={classes.paper}>
+                                        <div className="col-md-2" className={classes.root}>
+                                            <Paper className={classes.paper}>
                                                 <Grid container spacing={2}>
                                                     <Grid item>
-                                                        <Form>
-                                                            <div className="d-flex">
-                                                                <div className="ml-5">
-                                                                    <label>Event Title</label>
-                                                                    <form>
-                                                                        <input id="eventName" className="form-control mr-sm-3 custom-input p-3" type="text" placeholder="Event Name" a required/>
-                                                                    </form>
+                                                            <form onSubmit={handleSubmit(onSubmit)}>
+                                                                <div className="d-flex">
+                                                                    <div className="ml-3">
+                                                                        <label>Event Name</label>
+                                                                        <input name="name" type='text' placeholder="Event Name" required ref={register({ required: true })} />
+                                                                    </div>
+                                                                    <div className="ml-4">
+                                                                        <label>Event Date</label>
+                                                                        <input name="eventStarts" type='date' required ref={register({ required: true })} />
+                                                                    </div>
                                                                 </div>
-                                                                <div className="ml-5" id='eventDate'>
-                                                                    <label>Event Date</label>
-                                                                    <form className={classes.container} noValidate>
-                                                                        <TextField
-                                                                            id="date"
-                                                                            type="date"
-                                                                            defaultValue="2017-05-24"
-                                                                            className={classes.textField}
-                                                                            InputLabelProps={{
-                                                                            shrink: true,
-                                                                            }}
-                                                                        />
-                                                                    </form>
+                                                                <div className="mt-3 d-flex">
+                                                                    <div  className="ml-3">
+                                                                        <label>Description</label>
+                                                                        <input name="description" type="text" placeholder="Description" ref={register({ required: true })} />
+                                                                    </div>
+                                                                    <div className="uploadButton">
+                                                                        <label>Banner</label>
+                                                                            <label className='btn btn-outline-primary px-3'>
+                                                                                <img className="icon" src={upload} alt="" />
+                                                                                    Upload Image
+                                                                                <input name="pic_url" type="file" ref={register({ required: true })} />
+                                                                            </label>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div className=" mt-3 d-flex">
-                                                                <div  className="ml-5">
-                                                                    <label>Description</label>
-                                                                    <form>
-                                                                        <input id="eventDescription" className="form-control mr-sm-3 custom-input p-3" type="text" placeholder="Description" a required/>
-                                                                    </form>
+                                                                <hr/>
+                                                                <div className='d-flex justify-content-end'>
+                                                                        <button className="btn btn-primary mt-5 px-4 justify-content-end" type="submit">Submit</button>
                                                                 </div>
-                                                                <div className="ml-5 uploadButton">
-                                                                    <label>Banner</label>
-                                                                    <label className="btn btn-outline-primary">
-                                                                        <img className="icon" src={upload} alt=""/>
-                                                                            Upload Image
-                                                                        <input type="file" id='eventPic'/>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </Form>                    
+                                                            </form>
                                                     </Grid>
-                                                    </Grid>
-                                                </Paper>
-                                                <button id="submitButton" className="btn btn-primary mt-5 px-4" onClick={handleAddEvent}>Submit</button> 
-                                            </div> 
-                                        </div>  
+                                                </Grid>
+                                            </Paper>
+                                        </div>
+                                    </div>
                                 </thead>
                             </table>
                         </div>
