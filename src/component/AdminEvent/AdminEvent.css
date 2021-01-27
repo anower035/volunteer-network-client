@@ -20,8 +20,6 @@ input[type="text"]{
 }
 input[type='text']:focus { 
     outline: none;
-    border-color: skyblue;
-    box-shadow: 0 0 5px 2px skyblue;
 }
 input[type="date"]{
     width:90%;
